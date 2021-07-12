@@ -20,13 +20,8 @@ function searchCity(event) {
             return response.json();
     })
         .then(function(data) {
-            //just a check to see if the above is working
-            console.log(data);
             //log city name, temp, humidity, and wind speed
             console.log(data.name);
-            console.log("Temperature: " + data.main.temp + " degrees Fahrenheit"); 
-            console.log("Humidity: " + data.main.humidity + "%"); 
-            console.log("Wind Speed: " + data.wind.speed + " mph");
             //save latitude and longitude to be used as parameters in another fetch request           
             var lat= data.coord.lat;
             var lon= data.coord.lon;
@@ -38,50 +33,32 @@ function searchCity(event) {
                 return response.json();
             })
             .then(function(data) {
-                //just a check to see if the above is working
-                console.log(data);
                 //convert the date into a readable string
                 var currentDate = new Date(data.current.dt*1000);
                 var formatCurrentDate = currentDate.toLocaleString("en-US", { year: 'numeric', month: 'numeric', day: 'numeric' });
                 //log current termp, humidity, wind speed, UV index and date
+                console.log("Date: " + formatCurrentDate);
                 console.log("Temperature: " + data.current.temp + " degrees Fahrenheit"); 
                 console.log("Humidity: " + data.current.humidity + "%"); 
                 console.log("Wind Speed: " + data.current.wind_speed + " mph");
                 console.log("UV Index: " + data.current.uvi);
-                console.log("Date: " + formatCurrentDate);
                 console.log("Icon: " + data.current.weather[0].icon);
                 console.log("Description: " + data.current.weather[0].description);
-                console.log(typeof data.current.dt);
-                console.log(typeof dayInSeconds);
-                //get timestamps for the previous 5 days
-                var pastDays= [
-                        data.current.dt-dayInSeconds,
-                        data.current.dt-2*dayInSeconds,
-                        data.current.dt-3*dayInSeconds,
-                        data.current.dt-4*dayInSeconds,
-                        data.current.dt-5*dayInSeconds] 
-                //just a check to see if the above is working
-                console.log(pastDays);
-                //iterate the through the dates for the past five days and retrieve weather information
-                for(var i=0; i<pastDays.length;i++){
-                    var queryURL3= "https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=" + lat + "&lon=" + lon + "&dt=" + pastDays[i] + "&appid=" + APIKey;
-                    //fetch request for data from 1 day ago
-                    fetch(queryURL3)
-                        .then(function(response){
-                            return response.json();
-                        })
-                            .then(function(data) {
-                                console.log(data);
-                                currentDate = new Date(data.current.dt*1000);
-                                formatCurrentDate = currentDate.toLocaleString("en-US", { year: 'numeric', month: 'numeric', day: 'numeric' });
-                                console.log("Humidity: " + data.current.humidity + "%"); 
-                                console.log("Wind Speed: " + data.current.wind_speed + " mph");
-                                console.log("UV Index: " + data.current.uvi);
-                                console.log("Date: " + formatCurrentDate);
-                                console.log("Icon: " + data.current.weather[0].icon);
-                                console.log("Description: " + data.current.weather[0].description);
-                            });
-                    };
+               
+                for(var i=1; i<6; i++){
+                    currentDate = new Date(data.daily[i].dt*1000);
+                    formatCurrentDate = currentDate.toLocaleString("en-US", { year: 'numeric', month: 'numeric', day: 'numeric' });
+                    
+                    console.log("Date: " + formatCurrentDate);
+                    console.log("Temperature: " + data.daily[i].temp.day + " degrees Fahrenheit"); 
+                    console.log("Humidity: " + data.daily[i].humidity + "%"); 
+                    console.log("Wind Speed: " + data.daily[i].wind_speed + " mph");
+                    console.log("UV Index: " + data.daily[i].uvi);
+                    console.log("Icon: " + data.daily[i].weather[0].icon);
+                    console.log("Description: " + data.daily[i].weather[0].description);
+
+                };
+  
            });
         });
     //call function to display search history and clear current search
