@@ -2,8 +2,13 @@
 var APIKey= "eb145cf7d73a9a6af533438e5bc0b8ff";
 var search= document.getElementById("search");
 var currentCity;
-var test= document.getElementById("test");
+/* var test= document.getElementById("cityname"); */
 var dayInSeconds = 86400;
+var cityName = document.getElementById("cityname");
+var temp = document.getElementById("temp");
+var wind = document.getElementById("wind");
+var humidity = document.getElementById("humidity");
+var uvi = document.getElementById("uvi");
 
 //THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
 
@@ -20,8 +25,10 @@ function searchCity(event) {
             return response.json();
     })
         .then(function(data) {
+            console.log(data);
             //log city name, temp, humidity, and wind speed
             console.log(data.name);
+            cityName.textContent = data.name;
             //save latitude and longitude to be used as parameters in another fetch request           
             var lat= data.coord.lat;
             var lon= data.coord.lon;
@@ -33,22 +40,34 @@ function searchCity(event) {
                 return response.json();
             })
             .then(function(data) {
+                console.log(data);
                 //convert the date into a readable string
                 var currentDate = new Date(data.current.dt*1000);
                 var formatCurrentDate = currentDate.toLocaleString("en-US", { year: 'numeric', month: 'numeric', day: 'numeric' });
-                //log current termp, humidity, wind speed, UV index and date
-                console.log("Date: " + formatCurrentDate);
-                console.log("Temperature: " + data.current.temp + " degrees Fahrenheit"); 
-                console.log("Humidity: " + data.current.humidity + "%"); 
-                console.log("Wind Speed: " + data.current.wind_speed + " mph");
-                console.log("UV Index: " + data.current.uvi);
-                console.log("Icon: " + data.current.weather[0].icon);
-                console.log("Description: " + data.current.weather[0].description);
+                //display current date
+                date.textContent = "(" + formatCurrentDate + ")";
+                //display current weather icon
+                img_home.innerHTML= '';
+                var img = new Image();
+                img.src = "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png";
+                img_home.appendChild(img);
+                //display current weather data
+                temp.textContent = "Temp: " + data.current.temp + "° Fahrenheit";
+                humidity.textContent = "Humidity: " + data.current.humidity + "%";
+                wind.textContent = "Wind: " + data.current.wind_speed + " MPH"
+                uvi.textContent = "UV Index: " + data.current.uvi;
                
                 for(var i=1; i<6; i++){
                     currentDate = new Date(data.daily[i].dt*1000);
                     formatCurrentDate = currentDate.toLocaleString("en-US", { year: 'numeric', month: 'numeric', day: 'numeric' });
-                    
+                    //Display weather info for 5 days in the future
+                    $("#"+i).append("<p>"+ formatCurrentDate + "</p>");
+                    $("#"+i).append("<img src = 'http://openweathermap.org/img/wn/' + data.daily[i].weather[0].icon + '@2x.png ></img>");
+                    $("#"+i).append("<p>Temp: " + data.daily[i].temp.day + "° Fahrenheit</p>");
+                    $("#"+i).append("<p>Humidity: " + data.daily[i].humidity + "%</p>");
+                    $("#"+i).append("<p>Wind Speed: " + data.daily[i].wind_speed + " MPH</p>");
+                    $("#"+i).append("<p>UV Index: " + data.daily[i].uvi + "</p>");
+                    //Just a check to see if the above is working
                     console.log("Date: " + formatCurrentDate);
                     console.log("Temperature: " + data.daily[i].temp.day + " degrees Fahrenheit"); 
                     console.log("Humidity: " + data.daily[i].humidity + "%"); 

@@ -23,10 +23,47 @@
   </head>
 
   <body>
-    <form>
-        <input type="text" name="city" id="city">
-        <button id="search">Search</button>
-    </form>
+    <h1>Weather Dashboard</h1>
+    <div>
+      <form>
+          <h2>Search for a City:</h2>
+          <input type="text" name="city" id="city">
+          <button id="search">Search</button>
+      </form>
+    </div>
+    <!-- Current Weather Card -->
+    <div class="card">
+      <div class="card-body">
+        <h2 id="cityname"></h2>
+        <div id="img_home"></div>
+        <h2 id="date"></h2>
+        <p id="temp"></p>
+        <p id="wind"></p>
+        <p id="humidity"></p>
+        <p id="uvi"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div id="1" class="card-body">
+      </div>
+    </div>
+
+    <div class="card">
+      <div id="2" class="card-body">
+      </div>
+    </div>
+
+    <div class="card">
+      <div id="3" class="card-body">
+      </div>
+    </div>
+
+    <div class="card">
+      <div id="4" class="card-body">
+      </div>
+    </div>
+    
     <p id="test"></p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
