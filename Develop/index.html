@@ -21,16 +21,25 @@
     <link rel="stylesheet" href="style.css" />
     <title>Weather Dashboard</title>
   </head>
-
   <body>
     <h1>Weather Dashboard</h1>
+     <!-- Search Bar -->
     <div>
       <form>
           <h2>Search for a City:</h2>
           <input type="text" name="city" id="city">
           <button id="search">Search</button>
+          <button id="clear">Clear Search History</button>
       </form>
     </div>
+    <!-- Search History -->
+    <ul id="search-list" class="list-group">
+      <!-- <li class="list-group-item active" aria-current="true">An active item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A fourth item</li>
+      <li class="list-group-item">And a fifth one</li> -->
+    </ul>
     <!-- Current Weather Card -->
     <div class="card">
       <div class="card-body">
@@ -43,28 +52,23 @@
         <p id="uvi"></p>
       </div>
     </div>
-
+    <!-- Future Weather Cards -->
     <div class="card">
       <div id="1" class="card-body">
       </div>
     </div>
-
     <div class="card">
       <div id="2" class="card-body">
       </div>
     </div>
-
     <div class="card">
       <div id="3" class="card-body">
       </div>
     </div>
-
     <div class="card">
       <div id="4" class="card-body">
       </div>
     </div>
-    
-    <p id="test"></p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="script.js"></script>
