@@ -110,8 +110,9 @@ function displaySearchHistory() {
 //when search button is clicked...
 search.addEventListener("click", searchCity);
 //when clear button is clicked...
-clear.addEventListener("click", function(){
+clear.addEventListener("click", function(event){
     event.preventDefault();
     localStorage.clear();
-    cityNames=[];
+    cityNames=[ ];
+    searchList.empty();
 });
