@@ -97,11 +97,16 @@ function searchCity(event) {
 
 //displays search history
 function displaySearchHistory() {
-    
     searchList.empty();
-
+    //loops through local storage to add display city names
     for(var i=0; i<cityNames.length; i++){
-        searchList.append("<li>"+cityNames[i]+"</li>").on("click", console.log("Clicked on "+cityNames[i]));
+        searchList.append("<li id=searched"+i+">"+cityNames[i]+"</li>");
+    };
+    //adds event listeners for each city name displayed in search history
+    for(var i=0; i<cityNames.length; i++){
+      $("#searched"+i).on("click",function(){
+            console.log(document.getElementById("#searched"+i).innerHTML);
+        });  
     };
 };
 
