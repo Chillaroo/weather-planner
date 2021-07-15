@@ -22,51 +22,59 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <h1>Weather Dashboard</h1>
-     <!-- Search Bar -->
-    <div>
-      <form>
-          <h2>Search for a City:</h2>
-          <input type="text" name="city" id="city">
-          <button id="search">Search</button>
-          <button id="clear">Clear Search History</button>
-      </form>
-    </div>
-    <!-- Search History -->
-    <ul id="search-list" class="list-group">
-      <!-- <li class="list-group-item active" aria-current="true">An active item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A fourth item</li>
-      <li class="list-group-item">And a fifth one</li> -->
-    </ul>
-    <!-- Current Weather Card -->
-    <div class="card">
-      <div class="card-body">
-        <h2 id="cityname"></h2>
-        <div id="img_home"></div>
-        <h2 id="date"></h2>
-        <p id="temp"></p>
-        <p id="wind"></p>
-        <p id="humidity"></p>
-        <p id="uvi"></p>
+    <h1 id="banner">Weather Dashboard</h1>
+    <div id=search-current>
+      <!-- Search Bar -->
+      <div id="search-area">
+        <form>
+            <h2>Search for a City:</h2>
+            <input type="text" name="city" id="city" placeholder="e.g. Burlington">
+            <button id="search">Search</button>
+            <button id="clear">Clear Search History</button>
+        </form>
+      
+        <!-- Search History -->
+        <ul id="search-list" class="list-group"></ul>
       </div>
-    </div>
-    <!-- Future Weather Cards -->
-    <div class="card">
-      <div id="1" class="card-body">
-      </div>
-    </div>
-    <div class="card">
-      <div id="2" class="card-body">
-      </div>
-    </div>
-    <div class="card">
-      <div id="3" class="card-body">
-      </div>
-    </div>
-    <div class="card">
-      <div id="4" class="card-body">
+      <div id="all-weather-cards">
+        <!-- Current Weather Card -->
+        <div id="current-weather" class="card">
+          <div class="card-body">
+            <h2 id="cityname"></h2>
+            <h2 id="date"></h2>
+            <div id="img_home"></div>
+            <p id="temp"></p>
+            <p id="wind"></p>
+            <p id="humidity"></p>
+            <p id="uvi">
+            <p id="uvi-display-number"></p>
+            </p>
+          </div>
+        </div>
+        <h2 id="forecast-label">5-Day Forecast:</h2>
+      <!-- Future Weather Cards -->
+        <div id="future-weather">
+          <div class="card">
+            <div id="1" class="card-body">
+            </div>
+          </div>
+          <div class="card">
+            <div id="2" class="card-body">
+            </div>
+          </div>
+          <div class="card">
+            <div id="3" class="card-body">
+            </div>
+          </div>
+          <div class="card">
+            <div id="4" class="card-body">
+            </div>
+          </div>
+          <div class="card">
+            <div id="5" class="card-body">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
