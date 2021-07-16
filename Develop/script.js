@@ -73,7 +73,7 @@ function searchCity(event) {
                     //display current weather icon
                     img_home.innerHTML= '';
                     var img = new Image();
-                    img.src = "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png";
+                    img.src = "https://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png";
                     img_home.appendChild(img);
                     //display current weather data
                     temp.textContent = "Temp: " + data.current.temp + " °F";
@@ -108,7 +108,7 @@ function searchCity(event) {
                         $("#"+i).empty();
                         //display weather info for 5 days in the future
                         $("#"+i).append("<p style=font-weight:bold;font-size:20px>"+ formatCurrentDate + "</p>");
-                        $("#"+i).append("<img src = http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png ></img>");
+                        $("#"+i).append("<img src = https://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png ></img>");
                         $("#"+i).append("<p>Temp: " + data.daily[i].temp.day + " °F</p>");
                         $("#"+i).append("<p>Wind Speed: " + data.daily[i].wind_speed + " mph</p>");
                         $("#"+i).append("<p>Humidity: " + data.daily[i].humidity + "%</p>");
@@ -201,7 +201,7 @@ function displaySearchHistory() {
                             $("#"+i).empty();
                             //display weather info for 5 days in the future
                             $("#"+i).append("<p>"+ formatCurrentDate + "</p>");
-                            $("#"+i).append("<img src = http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png ></img>");
+                            $("#"+i).append("<img src = https://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png ></img>");
                             $("#"+i).append("<p>Temp: " + data.daily[i].temp.day + "° Fahrenheit</p>");
                             $("#"+i).append("<p>Humidity: " + data.daily[i].humidity + "%</p>");
                             $("#"+i).append("<p>Wind Speed: " + data.daily[i].wind_speed + " MPH</p>");
