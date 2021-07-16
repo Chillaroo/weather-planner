@@ -35,7 +35,7 @@ function searchCity(event) {
     currentCity= document.getElementById("city").value;
     document.getElementById("city").value='';
     //URL for API call using city name
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&units=imperial&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&units=imperial&appid=" + APIKey;
     //fetch request using user specified city name
     fetch(queryURL)
     .then(function(response){
@@ -58,7 +58,7 @@ function searchCity(event) {
                 var lat= data.coord.lat;
                 var lon= data.coord.lon;
                 //query URL using lat and lon
-                var queryURL2 = "http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKey;
+                var queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKey;
                 //fetch request using latitude and longitude from user specified city name
                 fetch(queryURL2)
                 .then(function(response){
@@ -137,7 +137,7 @@ function displaySearchHistory() {
         $(this).on("click", function(){
         currentCity= $(this).text();
         console.log(currentCity);
-        queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&units=imperial&appid=" + APIKey;
+        queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&units=imperial&appid=" + APIKey;
         //fetch request using clicked city name
         fetch(queryURL)
         .then(function(response){
@@ -150,7 +150,7 @@ function displaySearchHistory() {
                  lat= data.coord.lat;
                  lon= data.coord.lon;
                  //query URL using lat and lon
-                 queryURL2 = "http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKey;
+                 queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKey;
                  //fetch request using latitude and longitude from user specified city name
                  fetch(queryURL2)
                  .then(function(response){
@@ -165,7 +165,7 @@ function displaySearchHistory() {
                         //display current weather icon
                         img_home.innerHTML= '';
                         var img = new Image();
-                        img.src = "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png";
+                        img.src = "https://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png";
                         img_home.appendChild(img);
                         //display current weather data
                         temp.textContent = "Temp: " + data.current.temp + " °F";
